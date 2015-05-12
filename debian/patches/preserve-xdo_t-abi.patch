@@ -1,0 +1,17 @@
+diff --git a/xdo.h b/xdo.h
+index cb3a02f..09c803a 100644
+--- a/xdo.h
++++ b/xdo.h
+@@ -85,6 +85,12 @@ typedef struct xdo {
+   /** @internal Lenth of charcodes array */
+   int charcodes_len;
+ 
++  /** @internal UNUSED -- result from XGetModifierMapping */
++  XModifierKeymap *modmap;
++
++  /** @internal UNUSED -- current keyboard mapping (via XGetKeyboardMapping) */
++  KeySym *keymap;
++
+   /** @internal highest keycode value */
+   int keycode_high; /* highest and lowest keycodes */
+ 

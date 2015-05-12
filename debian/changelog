@@ -1,0 +1,302 @@
+xdotool (1:3.20140805.1-2) unstable; urgency=medium
+
+  * made libxdo3 multiarch.
+  * revert ABI change for xdo_t (Closes: #764076)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 06 Oct 2014 14:37:07 -0400
+
+xdotool (1:3.20140805.1-1) unstable; urgency=medium
+
+  * new upstream version (pulled from git)
+   - debian/gbp.conf: pristine-tar = False because upstream=git
+   - removed all debian/patches (applied upstream)
+   - added libxkcommon-dev to build-deps
+   - dropped globally unused symbol from API without bumping SONAME.
+     added debian/libxdo-dev.NEWS about this.
+  * wrap-and-sort, cleaning up debian/copyright
+  * bump Standards-Version to 3.9.6 (no changes needed)
+  * make package short description more findable (Closes: #763914)
+  * updated debian/copyright to format 1.0
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Fri, 03 Oct 2014 14:22:37 -0400
+
+xdotool (1:3.20130111.1-5) unstable; urgency=medium
+
+  * re-add ruby-test-unit to the build-dep because apparently
+    Test::Unit::AssertionFailedError depends on it.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 05 Aug 2014 15:51:39 -0400
+
+xdotool (1:3.20130111.1-4) unstable; urgency=medium
+
+  * acknowledge NMU (thanks, Christian Hofstaedtler)
+  * bump standards-version to 3.9.5 (no changes needed)
+  * move Vcs to collab-maint
+  * patch test suite to deal with ruby file descriptor closure (Closes: #752974)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 04 Aug 2014 21:20:02 -0400
+
+xdotool (1:3.20130111.1-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Use any available Ruby interpreter to run the tests.
+    (Closes: #723648)
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Thu, 13 Feb 2014 02:13:46 +0100
+
+xdotool (1:3.20130111.1-3) unstable; urgency=low
+
+  * libxdo-dev now Depends: libx11-dev
+  * upload to unstable
+  * fail cleanly instead of segfaulting on libxdo initialization failure
+    in xdotool (as-yet-unreleased patch from upstream)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sun, 05 May 2013 13:22:28 -0400
+
+xdotool (1:3.20130111.1-2) experimental; urgency=low
+
+  * added libxdo3-dbg package for debug symbols for libxdo.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 17 Jan 2013 03:25:43 -0500
+
+xdotool (1:3.20130111.1-1) experimental; urgency=low
+
+  * new upstream release (includes API change and SONAME bump from 2 to 3)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Fri, 11 Jan 2013 21:35:25 -0500
+
+xdotool (1:2.20110530.1-6) unstable; urgency=low
+
+  * remove de and se symbol typing tests, since i can't seem to get
+    upstream to debug them.  This is a move of despair :(
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 14 Nov 2012 15:42:02 -0500
+
+xdotool (1:2.20110530.1-5) unstable; urgency=low
+
+  * building against ruby 1.8 to try to deal with the buildd failures.
+    (drops patch for #680284, since it is unneeded by ruby 1.8)
+  * debian/control: bumped Standards-Version to 3.9.3 (no changes needed)
+  * switch to dh compatibility level 9 for hardening
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Fri, 03 Aug 2012 03:13:15 -0400
+
+xdotool (1:2.20110530.1-4) unstable; urgency=low
+
+  * link properly on GNU/Hurd as well
+  * use require_relative in the test suite (Closes: #680824) Thanks,
+    Salvatore Bonaccorso!
+  * avoid symbol typing tests that switch locales (Closes: #642404)
+  * use patch from upstream to avoid C++ keyword (Closes: #663007)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 15 Jun 2011 11:30:52 -0400
+
+xdotool (1:2.20110530.1-3) unstable; urgency=low
+
+  * drop isatty() check in script_main() so xdotool can run even when it
+    is not a tty.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 14 Jun 2011 15:44:34 -0400
+
+xdotool (1:2.20110530.1-2) unstable; urgency=low
+
+  * forgot to close upstream release bug (Closes: #618897)
+  * using SHELL=/bin/bash for "make test"
+  * patch platform.sh to use standard libc options for GNU/kFreeBSD
+    (Closes: #629598)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Fri, 10 Jun 2011 01:17:33 -0400
+
+xdotool (1:2.20110530.1-1) unstable; urgency=low
+
+  * New Upstream release
+  * removed debian/patches/fix-pod-errors.patch -- adopted upstream.
+  * debian/control: bumped Standards-Version to 3.9.2 (no changes needed).
+  * debian/rules: doxygen seems to want to place an unnecessary copy of
+    jquery.js into docs/html/ -- force removal of it.
+  * add libxinerama-dev to the build-deps
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 31 May 2011 10:48:09 -0400
+
+xdotool (1:2.20101012.3049-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 12 Oct 2010 04:37:39 -0400
+
+xdotool (1:2.20100818.3004-1) experimental; urgency=low
+
+  * New upstream release
+   - dropped remove-build-dep-on-lsof.patch, no longer needed.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 12 Oct 2010 04:36:59 -0400
+
+xdotool (1:2.20100701.2961-3) unstable; urgency=low
+
+  * remove build-dependency on lsof by using upstream's new
+    t/ephemeral-x.sh (Closes: #590827)
+  * disable tests using gnome-session, as they do not appear to even start
+    up.
+  * bumped Standards-Version to 3.9.1 (no changes needed).
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 23 Sep 2010 15:26:15 -0400
+
+xdotool (1:2.20100701.2961-2) unstable; urgency=low
+
+  * avoid compressing .js files so that search functionality works in the
+    documentation for libxdo-dev.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 01 Jul 2010 17:25:34 -0400
+
+xdotool (1:2.20100701.2961-1) unstable; urgency=low
+
+  * New Upstream Release (Closes: #586768) 
+   - added two new symbols for libxdo2
+   - ship html documentation for libxdo-dev
+  * added procps as a build-dep so ephemeral-x.sh can find pkill.
+  * bumped Standards-Version to 3.9.0 (no changes needed).
+  * moved license into debian/copyright to avoid referencing deprecated
+    common-licenses/BSD.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 01 Jul 2010 12:45:52 -0400
+
+xdotool (1:2.20100602.2915-1) unstable; urgency=low
+
+  * New Upstream Release
+  * SONAME bump: libxdo1 → libxdo2
+  
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 01 Jun 2010 10:23:20 -0400
+
+xdotool (1:1.20100318.2737-1) unstable; urgency=low
+
+  * New Upstream Release (Closes: #575257)
+  * Included some settings for how I use git-buildpackage for xdotool
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 24 Mar 2010 13:04:08 -0400
+
+xdotool (1:1.20100312.2730-1~pre1) UNRELEASED; urgency=low
+
+  * New Upstream Release
+  * added ruby as build-dep for the new test suite.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 24 Mar 2010 13:03:32 -0400
+
+xdotool (1:1.20100302.2708-1) unstable; urgency=low
+
+  * New Upstream Release
+  * removed all debian/patches (adopted by upstream).
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 02 Mar 2010 12:47:06 -0500
+
+xdotool (1:1.20100227.2679-1~pre1) UNRELEASED; urgency=low
+
+  * New Upstream Release
+  * debian/patches: dropping fixing_bash_variable_assignment (unneeded)
+  * SONAME bump: libxdo0 → libxdo1
+  * added build-dep on xfonts-base to make sure tests can run.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 01 Mar 2010 09:32:47 -0500
+
+xdotool (1:0.20100118.2605-1~pre1) UNRELEASED; urgency=low
+
+  * New Upstream Release (new version numbering scheme)
+  * added epoch number since upstream's versioning has changed.
+  * bumped Standards-Version to 3.8.4 (no changes needed).
+  * changed debian/watch to match new versioning scheme (and ignore older
+    versions).
+  * changed to packaging format 3.0 (quilt).
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 01 Mar 2010 00:46:30 -0500
+
+xdotool (20091231.03-1) unstable; urgency=low
+
+  * New upstream release (introduces new shared libxdo).
+  * broke out library packaging (Closes: #560176)
+  * switched test suite to use openbox instead of gnome to be easier on
+    the buildd's.
+  * added build-deps for full test suite coverage.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 05 Jan 2010 12:48:12 -0500
+
+xdotool (20090815-3) unstable; urgency=low
+
+  * added Build-Depends: x11-utils xterm (Closes: #560399)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 10 Dec 2009 16:58:14 -0500
+
+xdotool (20090815-2) unstable; urgency=low
+
+  * added Build-Depends: xauth (Closes: #560273)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 10 Dec 2009 11:50:56 -0500
+
+xdotool (20090815-1) unstable; urgency=low
+
+  * New upstream release
+  * switched packaging to git-buildpackage
+  * removed Dm-Upload-Allowed
+  * bumped standards version
+  * added xvfb to Build-Depends so that tests can be run
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 09 Dec 2009 13:37:58 -0500
+
+xdotool (20090330-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 31 Mar 2009 12:34:58 -0400
+
+xdotool (20090126-1) unstable; urgency=low
+
+  * New upstream release
+  * updated my e-mail address
+  * now using debhelper override_dh_* targets
+  * bumped policy to 3.8.1 (no changes needed)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 31 Mar 2009 00:35:06 -0400
+
+xdotool (20080720-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Sun, 20 Jul 2008 22:18:56 -0400
+
+xdotool (20080716-1) unstable; urgency=low
+
+  * New upstream release (Closes: #490824)
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Fri, 18 Jul 2008 18:08:39 -0400
+
+xdotool (20080606-1) unstable; urgency=low
+
+  * New upstream release (Closes: #458375)
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Fri, 06 Jun 2008 10:25:10 -0400
+
+xdotool (20080603-1) unstable; urgency=low
+
+  * New upstream release
+  * Now including upstream changelog.
+  * Return non-zero value when encountering an unknown command.
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Tue, 03 Jun 2008 09:59:19 -0400
+
+xdotool (20071230-2) unstable; urgency=low
+
+  * bumped to debhelper 7
+  * minimized debian/rules
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Tue, 20 May 2008 10:46:35 -0400
+
+xdotool (20071230-1) unstable; urgency=low
+
+  * New Upstream Release (includes COPYRIGHT file)
+  
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Sun, 30 Dec 2007 15:05:28 -0500
+
+xdotool (20070903-1) unstable; urgency=low
+
+  * Initial packaging attempt.
+
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Sat, 29 Dec 2007 12:33:38 -0500
+

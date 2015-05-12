@@ -1,0 +1,4 @@
+#!/usr/bin/dh-exec
+docs/* usr/share/doc/libxdo-dev
+usr/lib/libxdo.so usr/lib/${DEB_HOST_MULTIARCH}/
+xdo.h usr/include

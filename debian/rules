@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- WITHOUT_RPATH_FIX=1
+	make docs
+	rm -f docs/html/jquery.js
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGELIST
+
+override_dh_auto_install:
+	make install PREFIX=debian/tmp/usr INSTALLMAN=debian/tmp/usr/share/man
+
+override_dh_clean:
+	dh_clean
+	rm -rf docs/
+
+override_dh_compress:
+	dh_compress -X.js
+
+override_dh_auto_test:
+	SHELL=/bin/bash dh_auto_test -- HEADLESS_TESTS="test-xvfb-nowm test-xvfb-openbox" XEPHYR_TESTS="test-xephyr-nowm test-xephyr-openbox" SKIP_KNOWN_BROKEN_TESTS=1
+
+override_dh_strip:
+	dh_strip -plibxdo3 --dbg-package=libxdo3-dbg
+	dh_strip
